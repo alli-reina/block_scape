@@ -19,8 +19,8 @@ class BlockGame:
                 self.terrain_blocks.append(block)
 
     def handle_input(self, key):
-        # Switch inventory slot
-        if key in ['1', '2', '3']:
+        # Switch inventory slot for all 7 blocks
+        if key in ['1', '2', '3', '4', '5', '6', '7']:
             self.inventory.select_slot(int(key) - 1)
 
         if key in ('q', 'escape'):
@@ -42,4 +42,3 @@ class BlockGame:
             self.terrain_blocks.remove(block)
             destroy(block)
             self.inventory.add_block('dirt') 
-

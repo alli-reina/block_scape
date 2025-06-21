@@ -3,7 +3,7 @@ from ursina import *
 
 class Inventory:
     def __init__(self):
-        self.slots = ['dirt', 'stone', 'grass']
+        self.slots = ['dirt', 'stone', 'grass', 'mossy_stone', 'brick', 'leaves', 'wood']
         self.selected_index = 0
         self.ui_borders = []
         self.ui_boxes = []
@@ -12,7 +12,6 @@ class Inventory:
         self.create_ui()
 
     def create_ui(self):
-        # Layout settings
         slot_width = 0.12
         slot_spacing = 0.03
         total_hotbar_width = len(self.slots) * (slot_width + slot_spacing)
@@ -21,7 +20,7 @@ class Inventory:
         for slot_index, block_type in enumerate(self.slots):
             slot_position_x = start_position_x + slot_index * (slot_width + slot_spacing)
 
-            # Square border behind the box
+            # Border around the slot
             border_entity = Entity(
                 parent=camera.ui,
                 model='quad',
@@ -30,7 +29,7 @@ class Inventory:
                 position=(slot_position_x, -0.45, 0.01)
             )
 
-            # Square inventory slot
+            # Slot background
             box_entity = Entity(
                 parent=camera.ui,
                 model='quad',
@@ -39,7 +38,7 @@ class Inventory:
                 position=(slot_position_x, -0.45, 0)
             )
 
-            # Block icon inside the box
+            # Block icon inside slot
             icon_entity = Entity(
                 parent=box_entity,
                 model='quad',
