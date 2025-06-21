@@ -13,9 +13,9 @@ class BlockGame:
         self.player_controller = FirstPersonController()
         self.sky = Sky()
 
-        for row in range(20):
-            for col in range(20):
-                block = Block(position=(col, 0, row))
+        for row in range(-10, 10):
+            for col in range(-10, 10):
+                block = Block(position=(col, 0, row), block_type='grass')
                 self.terrain_blocks.append(block)
 
     def handle_input(self, key):
@@ -41,4 +41,5 @@ class BlockGame:
         if block in self.terrain_blocks:
             self.terrain_blocks.remove(block)
             destroy(block)
-            self.inventory.add_block('dirt') 
+            self.inventory.add_block('dirt')
+
